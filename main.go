@@ -16,7 +16,7 @@ func amdahlsLaw(P float64, N int) float64 {
 // หา speedup ด้วย Gustafson's Law
 func gustafsonsLaw(P float64, N int) float64 {
 	// speedup = (P*N) + (1-P)
-	// S คือการเพิ่มประสิทธิภาพ (Speedup)
+	// speedup เป็นจำนวนเท่าของงานที่ทำได้หลังเพิ่มprocessor
 	// P Parallelizable fraction คือส่วนของโปรแกรมที่สามารถทำงานขนานได้
 	//	 ค่า P ระหว่าง 0 ถึง 1
 	// N คือจำนวน processor
@@ -30,7 +30,7 @@ func main() {
 	// e.g.
 	P := 0.9 // 90% of the program can be parallelized
 	// 90%นี้ของโปรแกรมจึงรับ speedup เต็มที่เลย
-	N := 8 // Number of processors
+	N := 8 // จำนวน processors ทั้งหมดที่ใช้
 
 	speedupA := amdahlsLaw(P, N)
 	speedupG := gustafsonsLaw(P, N) //คำนวณความเร็วที่เพิ่มขึ้นหลัง parallel
